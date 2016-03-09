@@ -1,0 +1,14 @@
+{
+    "name": "eugene",
+    "version": "1.0.0",
+    "private": false,
+    "devDependencies": {
+        "chai": "latest",
+        "mocha": "latest",
+        "sinon": "latest",
+        "sinon-chai": "latest"
+    },
+    "scripts": {
+        "test": "mocha app --recursive"
+    }
+}
