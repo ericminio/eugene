@@ -10,4 +10,5 @@ var log = function(options, message) {
 log.only = function(category) {
     log.category = category;
 };
+
 module.exports = log;
