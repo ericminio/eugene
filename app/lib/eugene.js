@@ -3,14 +3,11 @@ var log = function(options, message) {
     var message = message || options.message;
 
     if (!log.category || category == log.category) {
-        log.messages.push(message);
-    }    
+        log.output.write(message);
+    }
 };
 
 log.only = function(category) {
     log.category = category;
-};
-log.clear = function() {
-    log.messages = [];
 };
 module.exports = log;
