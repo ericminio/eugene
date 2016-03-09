@@ -1,6 +1,7 @@
 {
     "name": "eugene",
     "version": "1.0.0",
+    "main": "./app/lib/eugene.js",
     "private": false,
     "devDependencies": {
         "chai": "latest",

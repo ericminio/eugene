@@ -1,17 +1,22 @@
-var log = function(options, message) {
+var eugene = {};
+
+eugene.log = function(options, message) {
     var category = options.category || options;
     var message = message || options.message;
 
-    if (log.shouldLog(category)) {
-        log.output.write(message);
+    if (eugene.shouldLog(category)) {
+        eugene.output.write(message);
     }
 };
 
-log.only = function(categories) {
-    log.categories= categories;
+eugene.logOnlyCategories = function(categories) {
+    eugene.categories= categories;
 };
-log.shouldLog = function(category) {
-    return !log.categories || log.categories.indexOf(category)!= -1
+eugene.shouldLog = function(category) {
+    return !eugene.categories || eugene.categories.indexOf(category)!= -1
+};
+eugene.useConsole = function() {
+    eugene.output = new (require('./console.output'))();
 };
 
-module.exports = log;
+module.exports = eugene

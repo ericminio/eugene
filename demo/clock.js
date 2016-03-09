@@ -1,9 +1,9 @@
-var log = require('../app/lib/eugene');
-log.output = new (require('../app/lib/console.output'))();
-log.only(['time', 'title']);
+var eugene = require('../app/lib/eugene');
+eugene.useConsole();
+eugene.logOnlyCategories(['time', 'title']);
 
-log('title', 'clock using Eugene');
+eugene.log('title', 'clock using Eugene');
 setInterval(function() {
-    log('time', new Date().toString());
-    log('waiting', '...');
+    eugene.log('time', new Date().toString());
+    eugene.log('waiting', '...');
 }, 1000);
