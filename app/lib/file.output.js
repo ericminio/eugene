@@ -5,8 +5,7 @@ var FileOutput = function(filePath) {
 
 FileOutput.prototype.write = function(message) {
     var fs = require('fs');
-    fs.writeFile(this.filePath, message, function (err) {
-    });
+    fs.writeFileSync(this.filePath, message);
 };
 
 module.exports = FileOutput;

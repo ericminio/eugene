@@ -6,15 +6,27 @@ var FileOutput = require('./lib/file.output');
 describe('File output strategy', function() {
 
     var fs = require('fs');
-    var filePath = './app/support/data/fileOutput.txt';
+    var folderPath = './app/support/data/';
+    var filePath = folderPath + 'fileOutput.txt';
+
+    beforeEach(function(done) {
+        if (!fs.existsSync(folderPath)){
+            fs.mkdir(folderPath, function(){
+                done();
+            });
+        }
+        else {
+            done();
+        }
+    });
 
     afterEach(function(done) {
-        fs.unlink(filePath, (err) => {
+        fs.unlink(filePath, function(){
             done();
         });
     });
 
-    it('writes to a file', function(done) {
+    it('writes to a file', function() {
         new FileOutput(filePath).write('Hello file!');
 
         fs.readFile(filePath, 'utf8', function(err, data) {
@@ -22,7 +34,6 @@ describe('File output strategy', function() {
                 console.log(err);
             }
             expect(data).to.equal('Hello file!');
-            done();
         });
     });
 });
