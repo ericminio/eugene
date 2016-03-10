@@ -5,6 +5,7 @@ describe('Eugene', function() {
 
     beforeEach(function() {
         eugene.output = require('./support/in.memory.output')();
+        eugene.renderer = require('./support/render.only.the.message');;
     });
 
     it('accepts strings', function() {

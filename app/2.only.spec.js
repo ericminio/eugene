@@ -5,6 +5,7 @@ describe('Logging', function() {
 
     beforeEach(function() {
         eugene.output = require('./support/in.memory.output')();
+        eugene.renderer = require('./support/render.only.the.message');
     });
 
     describe('only one category', function() {
