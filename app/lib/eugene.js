@@ -22,5 +22,9 @@ eugene.useConsole = function() {
     eugene.output = new (require('./console.output'))();
 };
 eugene.renderer = require('./renderer');
+eugene.loadConfiguration = function(filePath) {
+    var content = require('fs').readFileSync(filePath).toString();
+    eugene.categories = JSON.parse(content).logOnlyCategories;    
+};
 
 module.exports = eugene
