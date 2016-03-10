@@ -21,10 +21,16 @@ eugene.shouldLog = function(category) {
 eugene.useConsole = function() {
     eugene.output = new (require('./console.output'))();
 };
+
+eugene.useFile = function(filePath) {
+    eugene.output = new (require('./file.output'))(filePath);
+};
+
 eugene.renderer = require('./renderer');
+
 eugene.loadConfiguration = function(filePath) {
     var content = require('fs').readFileSync(filePath).toString();
-    eugene.categories = JSON.parse(content).logOnlyCategories;    
+    eugene.categories = JSON.parse(content).logOnlyCategories;
 };
 
 module.exports = eugene

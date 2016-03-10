@@ -3,7 +3,7 @@ var sinon = require('sinon');
 require('chai').use(require('sinon-chai'));
 var ConsoleOutput = require('./lib/console.output');
 
-describe('Console output strategy', function() {
+describe('Console output strategy \n    √ writes to a file', function() {
 
     var consoleLog = console.log;
 

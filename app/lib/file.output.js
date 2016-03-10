@@ -5,7 +5,11 @@ var FileOutput = function(filePath) {
 
 FileOutput.prototype.write = function(message) {
     var fs = require('fs');
-    fs.writeFileSync(this.filePath, message);
+    if (fs.existsSync(this.filePath)){
+        message = '\n' + message;
+    }
+
+    fs.appendFileSync(this.filePath, message);
 };
 
 module.exports = FileOutput;
