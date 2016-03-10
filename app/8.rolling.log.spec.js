@@ -67,4 +67,38 @@ describe('Rolling log', function() {
 
         expect(fs.existsSync('./app/support/data/logs/eugene.log.3')).to.equal(true);
     });
+
+    it('rools when file count is reached', function() {
+        eugene.renderer = function(category, message) { return message; };
+        fs.writeFileSync(path.join(logsPath, 'eugene.log.1'), '111111111111111');
+        fs.writeFileSync(path.join(logsPath, 'eugene.log.2'), '222222222222222');
+        fs.writeFileSync(path.join(logsPath, 'eugene.log.3'), '333333333333333');
+        eugene.useRollingLog({
+            path: logsPath,
+            fileSize: 10,
+            fileCount: 3
+        });
+        eugene.log('any', 'message');
+
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.3').toString()).to.equal('message');
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.2').toString()).to.equal('333333333333333');
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.1').toString()).to.equal('222222222222222');
+    });
+
+    it('works', function() {
+        eugene.renderer = function(category, message) { return message; };
+        eugene.useRollingLog({
+            path: logsPath,
+            fileSize: 10,
+            fileCount: 3
+        });
+        eugene.log('any', '111111111111111');
+        eugene.log('any', '222222222222222');
+        eugene.log('any', '333333333333333');
+        eugene.log('any', 'message');
+
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.3').toString()).to.equal('message');
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.2').toString()).to.equal('333333333333333');
+        expect(fs.readFileSync('./app/support/data/logs/eugene.log.1').toString()).to.equal('222222222222222');
+    });
 });
