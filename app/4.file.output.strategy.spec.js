@@ -8,21 +8,21 @@ describe('File output strategy', function() {
     var fs = require('fs');
     var filePath = './app/support/data/fileOutput.txt';
 
-    beforeEach(function(){
-
-    });
-
-    afterEach(function(){
+    afterEach(function(done) {
         fs.unlink(filePath, (err) => {
+            done();
         });
     });
 
     it('writes to a file', function(done) {
         new FileOutput(filePath).write('Hello file!');
 
-        fs.readFile(filePath, 'utf8', function (err,data) {
-          expect(data).to.equal('Hello file!');
-          done();
+        fs.readFile(filePath, 'utf8', function(err, data) {
+            if (err) {
+                console.log(err);
+            }
+            expect(data).to.equal('Hello file!');
+            done();
         });
     });
 });
