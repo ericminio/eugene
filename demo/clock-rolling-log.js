@@ -1,4 +1,10 @@
 var eugene = require('eugene');
+var fs = require('fs');
+
+if (!fs.existsSync('./logs')){
+    fs.mkdirSync('./logs');
+}
+
 eugene.useRollingLog({
     path: './logs',
     fileSize: 100,
