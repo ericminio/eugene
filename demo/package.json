@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demoing the use of eugene",
+  "main": "clock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eugene",
+    "log",
+    "only"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eugene": "^0.1.0"
+  }
+}

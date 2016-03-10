@@ -1,4 +1,4 @@
-var eugene = require('../app/lib/eugene');
+var eugene = require('eugene');
 
 eugene.log('title', 'clock using Eugene');
 setInterval(function() {
