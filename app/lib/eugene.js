@@ -26,6 +26,10 @@ eugene.useFile = function(filePath) {
     eugene.output = new (require('./file.output'))(filePath);
 };
 
+eugene.useRollingLog = function(options) {
+    eugene.output = new (require('./rolling.log'))(options);
+};
+
 eugene.renderer = require('./renderer');
 
 eugene.loadConfiguration = function(filePath) {
