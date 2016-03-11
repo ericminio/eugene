@@ -1,5 +1,5 @@
-var ConsoleOutput = function(colors) {
-    this.colors = colors;
+var ConsoleOutput = function() {
+    this.colors = {};
 };
 
 ConsoleOutput.prototype.write = function(message, category) {

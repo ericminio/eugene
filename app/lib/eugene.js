@@ -21,6 +21,9 @@ eugene.shouldLog = function(category) {
 eugene.useConsole = function(colors) {
     eugene.output = new (require('./console.output'))(colors);
 };
+eugene.useColor = function(color) {
+    Object.assign(eugene.output.colors, color);
+};
 
 eugene.useFile = function(filePath) {
     eugene.output = new (require('./file.output'))(filePath);

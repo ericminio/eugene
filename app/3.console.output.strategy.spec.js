@@ -20,16 +20,4 @@ describe('Console output strategy', function() {
 
         expect(console.log).to.have.been.calledWith('Hello console!');
     });
-
-    it('writes with the expected color', function() {
-        new ConsoleOutput({ 'error': '\x1b[1m\x1b[31m' }).write('Hello console!', 'error');
-
-        expect(console.log).to.have.been.calledWith('\x1b[1m\x1b[31mHello console!\x1b[0m');
-    });
-
-    it('supports unknown category', function() {
-        new ConsoleOutput({ 'error': '\x1b[1m\x1b[31m' }).write('Hello console!', 'other');
-
-        expect(console.log).to.have.been.calledWith('Hello console!');
-    });
 });

@@ -34,4 +34,12 @@ describe('Eugene', function() {
 
         expect(eugene.output.write).to.have.been.calledWith('Your father he is', 'Yoda');
     });
+
+    it('transfers color configuration to writer', function() {
+        eugene.useConsole();
+        eugene.useColor({ 'first': 'first-color' });
+        eugene.useColor({ 'second': 'second-color' });
+
+        expect(eugene.output.colors).to.deep.equal({ 'first': 'first-color', 'second': 'second-color' });
+    });
 });
