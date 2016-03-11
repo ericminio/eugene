@@ -5,7 +5,7 @@ eugene.log = function(options, message) {
     var message = message || options.message;
 
     if (eugene.shouldLog(category)) {
-        eugene.output.write(eugene.renderer(category, message));
+        eugene.output.write(eugene.renderer(category, message), category);
     }
 };
 
@@ -18,8 +18,8 @@ eugene.logAllCategories = function(categories) {
 eugene.shouldLog = function(category) {
     return !eugene.categories || eugene.categories.indexOf(category)!= -1
 };
-eugene.useConsole = function() {
-    eugene.output = new (require('./console.output'))();
+eugene.useConsole = function(colors) {
+    eugene.output = new (require('./console.output'))(colors);
 };
 
 eugene.useFile = function(filePath) {

@@ -25,4 +25,13 @@ describe('Eugene', function() {
 
         expect(eugene.output.messages).to.deep.equal(['will be logged']);
     });
+
+    it('delegates actual writing to the given output', function() {
+        var sinon = require('sinon');
+        require('chai').use(require('sinon-chai'));
+        eugene.output = { write: sinon.spy() };
+        eugene.log('Yoda', 'Your father he is');
+
+        expect(eugene.output.write).to.have.been.calledWith('Your father he is', 'Yoda');
+    });
 });
