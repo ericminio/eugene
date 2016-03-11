@@ -1,4 +1,4 @@
-var eugene = require('../app/lib/eugene');
+var eugene = require('eugene');
 
 var defaultRenderer = eugene.renderer;
 eugene.renderer = function(category, message) { return message; };
