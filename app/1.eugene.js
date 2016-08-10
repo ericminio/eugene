@@ -20,7 +20,7 @@ describe('Eugene', function() {
         expect(eugene.output.messages).to.deep.equal(['will be logged']);
     });
 
-    it('priorited string-based message', function() {
+    it('prioritizes given message over message given in options', function() {
         eugene.log({ category:'this category', message: 'will not be logged' }, 'will be logged');
 
         expect(eugene.output.messages).to.deep.equal(['will be logged']);
