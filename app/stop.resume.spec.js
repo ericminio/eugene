@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var eugene = require('./lib/eugene');
 
-describe.only('Stop and resume', function(){
+describe('Stop and resume', function(){
 
     beforeEach(function() {
         eugene.disable = false;
