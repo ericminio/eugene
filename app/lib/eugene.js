@@ -4,7 +4,7 @@ eugene.log = function(options, message) {
     var category = options.category || options;
     var message = message || options.message;
 
-    if (eugene.shouldLog(category)) {
+    if (eugene.shouldLog(category) && !eugene.disable) {
         eugene.output.write(eugene.renderer(category, message), category);
     }
 };
@@ -39,5 +39,13 @@ eugene.loadConfiguration = function(filePath) {
     var content = require('fs').readFileSync(filePath).toString();
     eugene.categories = JSON.parse(content).logOnlyCategories;
 };
+
+eugene.stop = function(){
+    eugene.disable = true;
+}
+
+eugene.resume = function(){
+    eugene.disable = false;
+}
 
 module.exports = eugene
