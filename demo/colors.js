@@ -15,6 +15,7 @@ eugene.log('black category', 'color');
 eugene.log('red category', 'color');
 eugene.log('green category', 'color');
 eugene.log('yellow category', 'color');
-eugene.log('blue cateogry', 'color');
+eugene.log('blue category', 'color');
 eugene.log('magneta category', 'color');
 eugene.log('cyan category', 'color');
+eugene.log('white category', 'color');

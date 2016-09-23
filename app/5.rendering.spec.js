@@ -4,7 +4,8 @@ var eugene = require('./lib/eugene');
 describe('Eugene', function() {
 
     beforeEach(function() {
-        eugene.output = require('./support/in.memory.output')();
+        eugene.outputs = [];
+        eugene.outputs.push(require('./support/in.memory.output')());
         eugene.logAllCategories();
     });
 
@@ -18,6 +19,6 @@ describe('Eugene', function() {
         };
         eugene.log('Yoda', 'your father he is');
 
-        expect(eugene.output.messages).to.deep.equal(['Yoda: your father he is']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['Yoda: your father he is']);
     });
 });

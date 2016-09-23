@@ -1,4 +1,4 @@
-var eugene = require('eugene');
+var eugene = require('../app/lib/eugene');
 eugene.logOnlyCategories(['TIME', 'title']);
 eugene.useConsole();
 eugene.useColor({ 'TIME': '\x1b[1m\x1b[32m' });

@@ -4,10 +4,10 @@ var fs = require('fs');
 var path = require('path');
 
 describe('Rolling log', function() {
-
     var logsPath = './app/support/data/logs';
 
     beforeEach(function() {
+        eugene.outputs = [];
         if (!fs.existsSync(logsPath)){
             fs.mkdirSync(logsPath);
         }

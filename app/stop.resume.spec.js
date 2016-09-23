@@ -5,7 +5,8 @@ describe('Stop and resume', function(){
 
     beforeEach(function() {
         eugene.disable = false;
-        eugene.output = require('./support/in.memory.output')();
+        eugene.outputs = [];
+        eugene.outputs.push(require('./support/in.memory.output')());
         eugene.renderer = require('./support/render.only.the.message');;
     });
 
@@ -15,10 +16,10 @@ describe('Stop and resume', function(){
 
     it('stop disables the output', function(){
         eugene.log('some-category','message-1');
-        expect(eugene.output.messages).to.deep.equal(['message-1']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['message-1']);
         eugene.stop();
         eugene.log('some-category','message-2');
-        expect(eugene.output.messages).to.deep.equal(['message-1']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['message-1']);
     });
 
     it('resume function is defined', function(){
@@ -27,14 +28,14 @@ describe('Stop and resume', function(){
 
     it('resume enables the output', function(){
         eugene.log('some-category','message-1');
-        expect(eugene.output.messages).to.deep.equal(['message-1']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['message-1']);
         
         eugene.stop();
         eugene.log('some-category','message-2');
-        expect(eugene.output.messages).to.deep.equal(['message-1']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['message-1']);
         
         eugene.resume();
         eugene.log('some-category','message-3');
-        expect(eugene.output.messages).to.deep.equal(['message-1', 'message-3']);
+        expect(eugene.outputs[0].messages).to.deep.equal(['message-1', 'message-3']);
     });
 });
