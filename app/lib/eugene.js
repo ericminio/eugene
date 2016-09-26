@@ -29,7 +29,6 @@ eugene.useConsole = function(colors) {
 eugene.useColor = function(color) {
     eugene.outputs.forEach(function(output){
             if(!output.colors){
-                console.log('aaa');
                 output.colors = {};
             }
             Object.assign(output.colors, color);
