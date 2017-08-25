@@ -1,0 +1,18 @@
+var eugene = require('eugene');
+var fs = require('fs');
+
+if (!fs.existsSync('./logs')){
+    fs.mkdirSync('./logs');
+}
+
+eugene.useRollingLog({
+    path: './logs',
+    fileSize: 100,
+    fileCount: 3
+});
+
+eugene.useConsole();
+
+eugene.logOnlyCategories(['TIME', 'title']);
+
+require('./tictac');
