@@ -43,4 +43,28 @@ describe('Eugene', function() {
 
         expect(eugene.outputs[0].colors).to.deep.equal({ 'first': 'first-color', 'second': 'second-color' });
     });
+
+    it('does not write undefined when logging 0', function() {
+        var fs = require('fs');
+        var path = require('path');
+
+        var logsPath = './app/support/data/logs/';
+        if (!fs.existsSync(logsPath)){
+            fs.mkdirSync(logsPath);
+        }
+        var files = fs.readdirSync(logsPath);
+        if (files) {
+            files.forEach(function(file) {
+                fs.unlinkSync(path.join(logsPath, file));
+            });
+        }
+
+        eugene.useFile(logsPath + 'zero.log');
+
+        eugene.log("info", 0);
+
+        var data = fs.readFileSync(logsPath + 'zero.log').toString();
+
+        expect(data).to.equal('0');
+    });
 });

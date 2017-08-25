@@ -2,6 +2,10 @@ var eugene = {};
 
 eugene.outputs = [];
 eugene.log = function(options, message) {
+    if(message === 0){
+        message = message.toString();
+    }
+    
     var category = options.category || options;
     var message = message || options.message;
 

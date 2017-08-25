@@ -1,4 +1,4 @@
-var eugene = require('eugene');
+var eugene = require('../app/lib/eugene');
 var fs = require('fs');
 
 if (!fs.existsSync('./logs')){
